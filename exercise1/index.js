@@ -1,7 +1,5 @@
-const h1 = document.querySelector("#headertext");
+const h1 = document.querySelector("h1");
 h1.textContent = "Fruits & Vegetables Corp";
-h1.style.color = "red";
-h1.style.fontSize = "xx-large";
 
 
 const li = document.querySelector("ul");
@@ -9,16 +7,21 @@ const main = document.querySelector("#main");
 const contactInfo = document.querySelector("#contact");
 const aboutText = document.querySelector("#about");
 const tHead = document.querySelector("table");
-const tdClass = document.getElementsByTagName("td"); // For-loop
+const tdClass = document.querySelectorAll("thead td"); // For-loop
 const headCssEl = document.head;
 
 function changeTd()  {
 for(let i = 0; i < tdClass.length; i++)  {
-    let tdEl = document.createElement("th");
-    let tdParent = tdClass[i].parentNode;
-    tdParent.replaceChild(tdEl, tdClass[i]);
+    let thEl = document.createElement("th");
+    thEl.textContent = tdClass[i].textContent;
+    tdClass[i].parentNode.appendChild(thEl);
+    tdClass[i].parentNode.removeChild(tdClass[i]);
+   /* let tdParent = tdClass[i].parentNode;
+    tdClass.replaceChild(thEl, tdClass.childNodes[i]);*/
   }
 }
+
+console.dir(changeTd());
 
 
 const aboutTitle = document.createElement("h2");
